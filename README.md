@@ -8,36 +8,36 @@ Open a command-line terminal. Type docker run docker/whalesay cowsay boo (docker
 
 Now lets create a Dockerfile. A Dockerfile is a recipe whch describes the files, environment, and commands that makes up an image. 
 
-1. Open Terminal and create a directory.
+a) Open Terminal and create a directory.
 $ mkdir mydockerbuild
 
-2. Change the diectory to mydockerbuild
+b) Change the diectory to mydockerbuild
 $ cd mydockerbuild
 
-3.Edit the new text file named Dockerfile in the current directory, usung a text editor such as nano or vi  on Linux/Mac or notepad on Windows.
+c) Edit the new text file named Dockerfile in the current directory, usung a text editor such as nano or vi  on Linux/Mac or notepad on Windows.
 
 $ nano Dockerfile
 
-4. Type in the below commands.
+d) Type in the below commands.
 FROM docker.whalesay:latest
 
 The FROM keyword tell the Docker which image you image is based on.
 
-5. Add a RUN command which will install fortunes program into the image.
+e) Add a RUN command which will install fortunes program into the image.
 RUN apt-get -y update && apt-get install -y fortunes
 
 The above two commands will refresh the list of packages to the image and install the fortunes program into it. The command f
 
-6. Add CMD statement that tells the image the final command to run after its environment is set up. The command fortune -a does that and sends the output to the cowsay command. 
+f) Add CMD statement that tells the image the final command to run after its environment is set up. The command fortune -a does that and sends the output to the cowsay command. 
 
 $ CMD /usr/games/fortune -a | cowsay
 
-7. Final the Dockerfile should contain the following commands
+g) Final the Dockerfile should contain the following commands
 FROM docker/whalesay:latest
 RUN apt-get -y update && apt-get install -y fortunes
 CMD /usr/games/fortune -a | cowsay
 
-8. Save the file and close the editor. 
+h) Save the file and close the editor. 
 
 Inside the mydockerbuild directory, build the image.
 $ docker build -t docker-whale .
@@ -48,18 +48,17 @@ Once the dockerfile is created check the presence of the file using docker image
 
 Now, lets push the image yo Docker hub.
 
-9. The image should have the namespace that is the YOUR_DOCKERHUB_NAME. 
+i) The image should have the namespace that is the YOUR_DOCKERHUB_NAME. 
+    "docker tag <imageid> <YOUR_DOCKERHUB_NAME>/docker-whale:latest"
 
-$ docker tag <imageid> <YOUR_DOCKERHUB_NAME>/docker-whale:latest
-
-10. Use the docker login command to log into the Docker Hub fromthe command line.
+j) Use the docker login command to log into the Docker Hub fromthe command line.
 $ docker login
 
 It will prompt you to provide username and password. After successful login use push command to push the image.
 
 $ docker push <YOUR_DOCKERHUB_NAME>/docker-whale:latest.
 
-11. Return to Docker Hub profile to see the new image.
+k) Return to Docker Hub profile to see the new image.
 
 
 For more information : https://docs.docker.com/
