@@ -41,7 +41,6 @@ h) Save the file and close the editor.
 
 Inside the mydockerbuild directory, build the image.
 $ docker build -t docker-whale .
-
 The 'docker build' command builds the image. The '-t' parameter gives your image a tag, so you can run it more easily later and '.' command tells the docker build command to look in the current directory for a file called Dockerfile. 
 
 Once the dockerfile is created check the presence of the file using docker images and you can find the image listed in it.
